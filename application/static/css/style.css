@@ -1,0 +1,251 @@
+body {
+    background-color: black
+}
+
+/* player box - global for each page the same */
+
+.player-box {
+    width: 24.0vw;
+    height: 44.0vh;
+    margin-top: 2.0vh;
+    margin-left: 2.0vw;
+    background-color: rgb(20, 20, 20);
+    border-radius: 5px;
+    border: 1px solid rgb(30, 30, 30);
+    text-align: center;
+    color: rgb(231, 211, 211);
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 2.2vw;
+    font-size: 2.2vh;
+}
+
+.player-txt {
+    margin-top: 2.0vh;
+}
+
+.player-button {
+    display: inline-block;
+}
+
+.player-button-txt {
+    display: block;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 1.8vw;
+    font-size: 1.8vh;
+    border: none;
+    text-align: center;
+}
+
+.player-button-icon {
+    font-size: 7.0vw !important;
+    font-size: 7.0vh !important;
+}
+
+.player-hr{
+    margin-top: 4.0vh; 
+    margin-bottom: 2.0.vh;
+}
+
+.player-current{
+    margin-top: 4.0vh; 
+}
+
+/* global wrapper for each page, the content will come inside - except index.html becaue there is the logo pic */
+
+.content-box {
+    min-height: 300px;
+    /* margin-top: 70px; */
+    margin-bottom: 70px;
+    margin-left: 500px;
+    width: 66%;
+    font-family: 'Tomorrow', sans-serif;
+    /* color: rgb(231, 211, 211); */
+    color: rgb(130, 130, 130);
+    font-size: 13px;
+    font-weight: 200;
+}
+
+/* playlist table style */
+
+.playlist th {
+    color: rgb(231, 211, 211);
+    border-bottom: 1pt solid;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 14px;
+    font-weight: 2000;
+    line-height: 12px;
+    padding: 4px 5px 4px 5px;
+}
+
+.playlist td {
+    color: rgb(231, 211, 211);
+    border-bottom: 0;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 12px;
+    padding: 3px 5px 3px 5px;
+}
+
+/* contact form style */
+
+#selection {
+    font-family: 'Tomorrow', sans-serif;
+}
+
+input[type="email"] {
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+textarea {
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+.form-label {
+    color: rgb(231, 211, 211);
+    font-size: 13px;
+    font-family: 'Tomorrow', sans-serif;
+    font-weight: 200;
+}
+
+.form-button {
+    border: 0px;
+}
+
+.msg-sent{
+    font-size: 14px; 
+    text-align: center;
+    border: 1px solid;
+    color: rgb(231, 211, 211);
+    border-radius: 2px;
+}
+
+/* archive - under construction page style */
+
+.under-construction {
+    min-height: 200px;
+    margin-left: 500px;
+    color: rgb(30, 30, 30);
+}
+
+@media (max-width:500px) {
+    .content-box {
+        margin-left: 30px;
+        width: 330px;
+    }
+}
+
+/* navbar style */
+
+nav {
+    position: absolute;
+    right: 35px;
+    border-top-style: groove;
+    border-top-color: rgb(231, 211, 211);
+    border-top-width: 1pt;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: grey;
+    font-size: 2.0vw;
+    font-size: 2.0vh;
+    margin-left: 2.0vw;
+    cursor:pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* background image style */
+
+
+img{
+    max-width:100%;
+    max-height:100%;
+}
+
+
+/* colapsible overlay*/
+.overlay {
+    overflow-x:hidden;
+    overflow-y:hidden;
+    height: 0%;
+    width: 70%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    /* overflow-y: hidden; */
+    transition: 3s;
+  }
+  
+  
+  .overlay-content {
+    overflow:hidden;
+    position: relative;
+    top: 5%;
+    width: 100%;
+    margin-right: 2.0vw;
+    text-align: center;
+    margin-top: 3.0vh;
+  }
+  
+  .overlay a {
+    overflow:hidden;
+    text-decoration: none;
+    color: #474649;
+    /* display: block; */
+    /* transition: 0.1s; */
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    overflow:hidden;
+    color: #b8adad;
+  }
+  
+  .overlay .closebtn {
+    overflow:hidden;
+    position: absolute;
+    /* top: 20px; */
+    right: 100px;
+    font-size: 6.0vh;
+  }
+  
+  .overlay-text {
+    overflow:hidden;
+      color: rgb(191, 177, 177);
+      font-size: 1.6vw;
+      font-size: 1.6vh;
+      font-family: 'Tomorrow', sans-serif;
+      margin-right: 2.00vw;
+  }
+
+  .overlay-h {
+      overflow:hidden;
+    color: rgb(191, 177, 177);
+    font-family: 'Tomorrow', sans-serif;
+    margin-right: 2.0vw;
+}
+
+body.modal-opened {
+    overflow: hidden;
+ }
+
+  @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
