@@ -8,3 +8,6 @@ venv/
 
 /logs
 
+# Local development override
+docker-compose.override.yaml
+

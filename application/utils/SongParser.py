@@ -1,5 +1,8 @@
+from config import Config
+
+
 class SongParser:
-    PATH_TO_PLAYLIST = "/opt/icecast/2.4.4/log/playlist.log"
+    PATH_TO_PLAYLIST = Config.ICECAST_PLAYLIST_LOG
 
     @classmethod
     def getLastNSongs(cls, n: int, channel: str) -> list:

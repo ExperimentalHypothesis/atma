@@ -2,6 +2,7 @@ import os
 from flask_restful import Resource
 from application import api
 from application.utils.SongParser import SongParser
+from config import Config
 
 class Song(Resource):
     """
@@ -10,15 +11,15 @@ class Song(Resource):
         -api/song/channel1 => return song details from cue file from channel1
         -api/song/channel2 => return song details from cue file from channel2
     """
-    
-    CUE_FILE_CHANNEL1 = r"/opt/ices/log/channel1/ices.cue"
-    CUE_FILE_CHANNEL2 = r"/opt/ices/log/channel2/ices.cue"
+
+    CUE_FILE_CHANNEL1 = Config.ICES_CUE_CHANNEL1
+    CUE_FILE_CHANNEL2 = Config.ICES_CUE_CHANNEL2
     
     def get(self, channel=None):
         if channel == None:
             ret = {}
             ret["channel1"] = SongParser.getSongDetailsFromCue("channel1", self.CUE_FILE_CHANNEL1)
-            ret["channel2"] = SongParser.getSongDetailsFromCue("channel2", self.CUE_FILE_CHANNEL1)
+            ret["channel2"] = SongParser.getSongDetailsFromCue("channel2", self.CUE_FILE_CHANNEL2)
             return ret, 200
         elif channel == "channel1":
             return SongParser.getSongDetailsFromCue(channel, self.CUE_FILE_CHANNEL1), 200

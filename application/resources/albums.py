@@ -4,6 +4,7 @@ from typing import List
 from flask_restful import Resource
 from application import api
 from marshmallow import fields, Schema
+from config import Config
 
 
 class Albums(Resource):
@@ -16,8 +17,8 @@ class Albums(Resource):
     def get(self, artist):
         val = {}
 
-        val["channel1"] = self._getAlbums(artist, "/audio/channel1")
-        val["channel2"] = self._getAlbums(artist, "/audio/channel2")
+        val["channel1"] = self._getAlbums(artist, Config.AUDIO_DIR_CHANNEL1)
+        val["channel2"] = self._getAlbums(artist, Config.AUDIO_DIR_CHANNEL2)
 
         return {artist: val}, 200
 
