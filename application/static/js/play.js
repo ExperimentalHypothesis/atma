@@ -20,8 +20,6 @@ function toggle_play() {
 
 // Switch between channels
 function switchChannel(channelNum) {
-  const wasPlaying = !audio.paused;
-
   // Stop current playback
   audio.pause();
 
@@ -30,17 +28,15 @@ function switchChannel(channelNum) {
   audioSource.src = `${STREAM_BASE_URL}/channel${channelNum}`;
   audio.load();
 
-  // Resume playback if it was playing
-  if (wasPlaying) {
-    audio.play();
-  }
+  // Reset UI to stopped state
+  listen_now_txt.innerHTML = "listen";
+  listen_now_icon.className = "fa fa-volume-up player-button-icon";
 
   // Update tab styling
   document.getElementById("tab-channel1").classList.toggle("active", channelNum === 1);
   document.getElementById("tab-channel2").classList.toggle("active", channelNum === 2);
 
-  // Update currently playing text (optional - could fetch from API)
-  // For now, just show loading state
+  // Update currently playing text
   document.getElementById("now-playing").textContent = "loading...";
 
   // Fetch current song for the new channel
