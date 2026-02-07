@@ -273,3 +273,35 @@ body.modal-opened {
         transform: translateX(-100%);
     }
 }
+
+/* Channel tabs */
+.channel-tabs {
+    margin-top: 1.5vh;
+    margin-bottom: 1.0vh;
+}
+
+.channel-tab {
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 1.6vh;
+    background: transparent;
+    border: 1px solid rgb(80, 80, 80);
+    color: rgb(150, 150, 150);
+    padding: 0.5vh 2vw;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.channel-tab:first-child {
+    border-right: none;
+}
+
+.channel-tab:hover {
+    color: rgb(231, 211, 211);
+    border-color: rgb(120, 120, 120);
+}
+
+.channel-tab.active {
+    background: rgb(40, 40, 40);
+    color: rgb(231, 211, 211);
+    border-color: rgb(120, 120, 120);
+}

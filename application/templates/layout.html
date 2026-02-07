@@ -33,8 +33,10 @@
 		<br>
 		<span class="player-txt">[ independent online radio ]</span>
 		<br>
-		<small> channel 1 </small>
-		<br>
+		<div class="channel-tabs">
+			<button id="tab-channel1" class="channel-tab active" onclick="switchChannel(1)">channel 1</button>
+			<button id="tab-channel2" class="channel-tab" onclick="switchChannel(2)">channel 2</button>
+		</div>
 		<br>
 		<div class="player-button">
 			<button id="bt-txt" class="player-button-txt" onclick="toggle_play()">listen</button>
@@ -42,20 +44,19 @@
 					class="fa fa-volume-up player-button-icon"></i></button>
 		</div>
 		<div class="player-button">
-			<button class="player-button-txt" onclick=location.href="/channel1.pls">download</button>
-			<button class="button" style="border: none;"
-				onclick=location.href="/channel1.pls">
+			<button id="bt-download" class="player-button-txt" onclick="downloadPlaylist()">download</button>
+			<button class="button" style="border: none;" onclick="downloadPlaylist()">
 				<i class="fa fa-file-audio-o player-button-icon"
 					aria-hidden="true"></i></button>
 		</div>
 		<audio id="player">
-			<source src="http://173.212.246.158:7778/channel1">
+			<source id="audio-source" src="http://173.212.246.158:7778/channel1">
 		</audio>
 		<hr class="player-hr", width=50% >
 		<small class="player-current" > currently playing </small>
 		<br>
 		<div class="marquee-container">
-			<small class="marquee-text">{{ author }} - {{ title }}</small>
+			<small id="now-playing" class="marquee-text">{{ author }} - {{ title }}</small>
 		</div>
 	</section>
 	{% block content %}{% endblock %}
