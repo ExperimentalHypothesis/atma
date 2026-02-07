@@ -53,7 +53,7 @@ function fetchNowPlaying(channelNum) {
   fetch(`/api/song/channel${channelNum}`)
     .then(response => response.json())
     .then(data => {
-      const text = `${data.artist} - ${data.album}`;
+      const text = `${data.artist} - ${data.album}`.toLowerCase();
       document.getElementById("now-playing").textContent = text;
     })
     .catch(error => {
