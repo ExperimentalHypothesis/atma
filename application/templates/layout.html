@@ -54,9 +54,11 @@
 		<hr class="player-hr", width=50% >
 		<small class="player-current" > currently playing </small>
 		<br>
-		<div class="marquee-container">
-			<small class="marquee-text">[ {{ author }} - {{ title }} ]</small>
+		<small>[ </small>
+		<div class="marquee-container" style="display: inline-block; width: 70%;">
+			<small class="marquee-text">{{ author }} - {{ title }}</small>
 		</div>
+		<small> ]</small>
 	</section>
 	{% block content %}{% endblock %}
 	<script src="{{ url_for('static', filename='js/play.js')}}"> </script>
