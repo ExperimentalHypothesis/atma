@@ -8,7 +8,7 @@ def getCurrentSong() -> dict:
         return dict(author="name of author", title="name of title")
     else:
         try:
-            with open("/opt/ices/log/channel1/ices.cue") as f:
+            with open(app.config["ICES_CUE_CHANNEL1"]) as f:
                 lines = [line for line in f]
                 author = lines[-2].lower()
                 title = lines[-1].lower()
