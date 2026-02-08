@@ -19,3 +19,10 @@ services:
     environment:
       - FLASK_ENV=production
       - SECRET_KEY=${SECRET_KEY:-please-change-this-secret-key}
+    networks:
+      - web
+
+networks:
+  web:
+    name: web
+    external: true

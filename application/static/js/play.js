@@ -4,7 +4,7 @@ const listen_now_txt = document.getElementById("bt-txt");
 const listen_now_icon = document.getElementById("bt-icon");
 
 let currentChannel = 1; // Track current channel
-const STREAM_BASE_URL = "http://173.212.246.158:7778";
+const STREAM_BASE_URL = "https://atma.fm";
 let eventSource = null; // SSE connection
 
 // Initialize SSE connection for real-time updates

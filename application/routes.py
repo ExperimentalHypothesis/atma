@@ -13,7 +13,7 @@ def index():
 def channel1_pls():
     pls_content = """[playlist]
 NumberOfEntries=1
-File1=http://173.212.246.158:7778/channel1
+File1=https://atma.fm/channel1
 Title1=Atma FM - Channel 1 (Ambient, Atmospheric, Experimental)
 Length1=-1
 Version=2
@@ -26,7 +26,7 @@ Version=2
 def channel2_pls():
     pls_content = """[playlist]
 NumberOfEntries=1
-File1=http://173.212.246.158:7778/channel2
+File1=https://atma.fm/channel2
 Title1=Atma FM - Channel 2 (Dark Ambient, Industrial, Gothic)
 Length1=-1
 Version=2
@@ -39,7 +39,7 @@ Version=2
 def channel1_m3u():
     m3u_content = """#EXTM3U
 #EXTINF:-1,Atma FM - Channel 1 (Ambient, Atmospheric, Experimental)
-http://173.212.246.158:7778/channel1
+https://atma.fm/channel1
 """
     return Response(m3u_content, mimetype="audio/x-mpegurl", headers={
         "Content-Disposition": "attachment; filename=atma-fm-channel1.m3u"
@@ -49,7 +49,7 @@ http://173.212.246.158:7778/channel1
 def channel2_m3u():
     m3u_content = """#EXTM3U
 #EXTINF:-1,Atma FM - Channel 2 (Dark Ambient, Industrial, Gothic)
-http://173.212.246.158:7778/channel2
+https://atma.fm/channel2
 """
     return Response(m3u_content, mimetype="audio/x-mpegurl", headers={
         "Content-Disposition": "attachment; filename=atma-fm-channel2.m3u"
