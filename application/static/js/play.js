@@ -5,6 +5,34 @@ const listen_now_icon = document.getElementById("bt-icon");
 
 let currentChannel = 1; // Track current channel
 const STREAM_BASE_URL = "http://173.212.246.158:7778";
+let eventSource = null; // SSE connection
+
+// Initialize SSE connection for real-time updates
+function connectSSE(channelNum) {
+  // Close existing connection if any
+  if (eventSource) {
+    eventSource.close();
+  }
+
+  // Connect to SSE endpoint
+  eventSource = new EventSource(`/api/events/channel${channelNum}`);
+
+  eventSource.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    if (data.type === 'nowplaying') {
+      const text = `${data.artist} - ${data.album}`.toLowerCase();
+      document.getElementById("now-playing").textContent = text;
+    }
+  };
+
+  eventSource.onerror = function(error) {
+    console.error('SSE connection error:', error);
+    // Will automatically reconnect
+  };
+}
+
+// Connect on page load
+connectSSE(currentChannel);
 
 function toggle_play() {
   if (audio.paused) {
@@ -39,27 +67,13 @@ function switchChannel(channelNum) {
   // Update currently playing text
   document.getElementById("now-playing").textContent = "loading...";
 
-  // Fetch current song for the new channel
-  fetchNowPlaying(channelNum);
+  // Reconnect SSE to new channel
+  connectSSE(channelNum);
 }
 
 // Download playlist for current channel
 function downloadPlaylist() {
   window.location.href = `/channel${currentChannel}.pls`;
-}
-
-// Fetch currently playing song for a channel
-function fetchNowPlaying(channelNum) {
-  fetch(`/api/song/channel${channelNum}`)
-    .then(response => response.json())
-    .then(data => {
-      const text = `${data.artist} - ${data.album}`.toLowerCase();
-      document.getElementById("now-playing").textContent = text;
-    })
-    .catch(error => {
-      console.error('Error fetching now playing:', error);
-      document.getElementById("now-playing").textContent = "unknown artist - unknown song";
-    });
 }
 
 // Update UI if audio state changes externally (e.g., ended, error)
@@ -77,3 +91,10 @@ audio.onended = function () {
   listen_now_txt.innerHTML = "listen";
   listen_now_icon.className = "fa fa-volume-up player-button-icon";
 };
+
+// Clean up SSE connection when page unloads
+window.addEventListener('beforeunload', function() {
+  if (eventSource) {
+    eventSource.close();
+  }
+});
